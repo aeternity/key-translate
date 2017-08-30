@@ -1,0 +1,24 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-vue/dist/bootstrap-vue.css";
+
+$fa-font-path: "~font-awesome/fonts/";
+@import "~font-awesome/scss/font-awesome";
+
+h1 {
+    padding: 2rem 0;
+    color: $gray-light;
+}
+
+h2 {
+    padding: 0.5rem 0;
+    font-size: 1.4rem;
+    color: $gray-light;
+}
+
+section {
+    padding: 2rem 0;
+}
+
+textarea {
+    height: 200px;
+}
