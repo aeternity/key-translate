@@ -7,11 +7,6 @@ Generate a ETH public/private key pair (derived ETH address) from your Bitcoin s
 * install dependencies and modules `npm install`
 * start the package `npm start`
 
-## Setup
-
-* install dependencies and modules `npm install`
-* start the package `npm start`
-
 ## Usage with mnemonic
 ```
 $  node convert.js <<mnemonic>> <<address>>
