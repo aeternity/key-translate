@@ -17,11 +17,10 @@ function resolve(dir) {
 module.exports = {
   entry: {
     main: './src/main.js',
-    worker: './src/utils/key-derivator-worker.js'
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    publicPath: isProd ? '' : 'http://localhost:8080/',
     filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
     chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
   },
@@ -90,25 +89,16 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        worker: {
+          output: {
+            filename: "hash.worker.js",
+            chunkFilename: "[id].hash.worker.js"
+          }
+        }
       }
     }),
-    new webpack.LoaderOptionsPlugin(
-      { minimize: true }
-    ),
-    new webpack.LoaderOptionsPlugin({
-			options: {
-				worker: {
-					output: {
-						filename: "hash.worker.js",
-						chunkFilename: "[id].hash.worker.js"
-					}
-				}
-			}
-		}),
     new CopyWebpackPlugin([{ from: './src/assets' }])
   ])
 } else {

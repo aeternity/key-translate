@@ -2,7 +2,8 @@ import bitcoinjs from 'bitcoinjs-lib';
 import ethereumjsWallet from 'ethereumjs-wallet';
 import bs58 from 'bs58';
 
-const worker = new Worker("js/worker.js");
+var Worker = require('worker-loader!./../utils/key-derivator-worker.js')
+const worker = new Worker();
 
 export default {
     name: 'BtcKeyInput',
