@@ -6,29 +6,42 @@ Generate a ETH public/private key pair (derived ETH address) from your Bitcoin s
 
 ## Setup
 
+`Use our hosted version on Github Pages here https://aeternity.github.io/key-translate/`
+
+Or clone the repository and run the script on your local computer offline:
 * install dependencies and modules `npm install`
 * start the package `npm start`
 
 ## Usage with mnemonic
-```
-$  node convert.js <<mnemonic>> <<address>>
-```
+
+You will need to enter:
+* your `mnemonic passphrase`
+* your public Bitcoin address (`public key`)
 
 ### Sample
+Mnemonic Passphrase:
 ```
-$  node convert.js "gold yard dizzy report sting cereal smart enter wild cargo balance season display process sick" 1D2i1bNfVQaVeasCRyRHEdiZYnVgwLUzBH
+gold yard dizzy report sting cereal smart enter wild cargo balance season display process sick
+```
+Public Key (Bitcoin Address)
+```
+1D2i1bNfVQaVeasCRyRHEdiZYnVgwLUzBH
 ```
 
 ## Usage with WIF
-```
-$  node convert.js <<wif>> <<address>>
-```
+You will need to enter:
+* your WIF (Bitcoin `private key`)
+* your public Bitcoin address (`public key`)
 
 ### Sample
+WIF / Bitcoin Private Key:
 ```
-$  node convert.js 5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ 1GAehh7TsJAHuUAeKZcXf5CnwuGuGgyX2S
+5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ
 ```
-
+Public Key (Bitcoin Address)
+```
+1GAehh7TsJAHuUAeKZcXf5CnwuGuGgyX2S
+```
 
 ## License
 
