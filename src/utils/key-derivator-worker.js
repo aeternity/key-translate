@@ -6,6 +6,8 @@ import ethereumjsWallet from 'ethereumjs-wallet';
 
 const bip32pathPrefix = "m/0'/0/";
 const bip44pathPrefix = "m/44'/0'/0'/0/";
+const myceliumAndroidPathPrefix = "m/44'/0'/0'/";
+
 const derivationTries = 100;
 
 self.onmessage = function(e) {
@@ -37,6 +39,13 @@ self.onmessage = function(e) {
             postMessage({ status: { path: bip44pathPrefix + i, type: 'BIP44' }});
             if (hdRoot.derivePath(bip44pathPrefix + i).getAddress() === address) {
                 wif = hdRoot.derivePath(bip44pathPrefix + i).keyPair.toWIF();
+                break;
+            }
+
+            // check if its a bip44 key used on mycelium for android
+            postMessage({ status: { path: myceliumAndroidPathPrefix + i, type: 'BIP44-Mycelium-Android' }});
+            if (hdRoot.derivePath(myceliumAndroidPathPrefix + i).getAddress() === address) {
+                wif = hdRoot.derivePath(myceliumAndroidPathPrefix + i).keyPair.toWIF();
                 break;
             }
 
