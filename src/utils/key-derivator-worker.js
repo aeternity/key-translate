@@ -10,6 +10,21 @@ const myceliumAndroidPathPrefix = "m/44'/0'/0'/";
 
 const derivationTries = 100;
 
+import japaneseWordlist from 'bip39/wordlists/japanese.json';
+import englishWordlist from 'bip39/wordlists/english.json';
+
+function getWordlistBySecret(secret) {
+    let firstWord = secret.trim().split(/\u3000/g)[0] // use ideographic space in unicode
+
+    // check if it is a japanese secret
+    if (japaneseWordlist.indexOf(firstWord) !== -1) {
+        console.log('detected japanese language.')
+        return japaneseWordlist
+    }
+
+    return englishWordlist
+}
+
 self.onmessage = function(e) {
     if (e.data.msg === undefined) return;
 
@@ -21,8 +36,10 @@ self.onmessage = function(e) {
     let wif;
     let hdRoot;
 
+    let wordlist = getWordlistBySecret(secret)
+
     // check if we deal with a mnenomic phrase
-    if (bip39.validateMnemonic(secret) && bitcoinjs.address) {
+    if (bip39.validateMnemonic(secret, wordlist) && bitcoinjs.address) {
         hdRoot = bitcoinjs.HDNode.fromSeedBuffer(bip39.mnemonicToSeed(secret));
 
         // search for used address

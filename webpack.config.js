@@ -89,6 +89,11 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
+    new CopyWebpackPlugin([{ from: './src/assets' }])
+  ])
+} else {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new FriendlyErrorsPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
         worker: {
@@ -98,12 +103,7 @@ if (process.env.NODE_ENV === 'production') {
           }
         }
       }
-    }),
-    new CopyWebpackPlugin([{ from: './src/assets' }])
-  ])
-} else {
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new FriendlyErrorsPlugin()
+    })
   ])
 }
 
