@@ -11,6 +11,20 @@ Or clone the repository and run the script on your local computer offline:
 * install dependencies and modules `npm install`
 * start the package `npm start`
 
+## Deployment
+After cloning and `npm install` the repository. 
+
+Then, checkout the `gh-pages` branch into the `/dist` subfolder:
+
+```
+git clone git@github.com:aeternity/key-translate.git --branch gh-pages dist
+``` 
+
+Now:
+
+* Use `npm run build` to build the new version
+* Deploy it using `npm run deploy`.
+
 ## Usage with Mnemonic Phrase
 
 You will need to enter:
